@@ -1,0 +1,6 @@
+<%= render 'errors', form: %>
+
+<%= form_for form, url: category_links_path, method: :post do |f| %>
+  <%= f.text_area :urls, size: '50x10' %>
+  <%= f.submit %>
+<% end %>
