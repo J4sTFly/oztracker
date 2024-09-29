@@ -1,18 +1,20 @@
 class ProcessCategoryLinkWorker
   include Sidekiq::Job
 
+  def perform(link_id)
+    link = CategoryLink.find(link_id)
 
+    Rails.logger.info("#{link.id} - #{link.url} processing started")
 
-  def perform(link)
     link.update(being_processed: true)
     link.update(last_processed_at: DateTime.now)
 
-    process_link(link)
+    ProcessCategoryLinksService.new(link).call
+
+    link.update(being_processed: false)
+
+    Rails.logger.info("#{link.id} - #{link.url} processing finished")
   end
 
   private
-
-  def process_link(link)
-    # Process link here
-  end
 end

@@ -1,15 +1,18 @@
 class CategoryLinksController < ApplicationController
   def new
-    form = NewCategoryLinksForm.new
+    form = NewCategoryLinksForm.new()
     render locals: { form: }
   end
 
   def create
     form = NewCategoryLinksForm.new(category_links_params)
-    result = form.save
 
-    # Instantiate worker for each link here and render :new
-    render :new
+    result = form.save
+    result.each do |link|
+      ProcessCategoryLinkWorker.perform_async(link.id)
+    end
+
+    render :new, locals: { form: }
   end
 
   private

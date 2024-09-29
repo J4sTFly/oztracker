@@ -1,6 +1,8 @@
 <%= render 'errors', form: %>
 
-<%= form_for form, url: category_links_path, method: :post do |f| %>
+<%= form_for form, url: category_links_path, method: :post, data: { turbo: false } do |f| %>
   <%= f.text_area :urls, size: '50x10' %>
   <%= f.submit %>
+
+  <% f.hidden_field :category_links %>
 <% end %>

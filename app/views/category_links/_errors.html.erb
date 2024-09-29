@@ -1,1 +1,8 @@
-<% form.%>
+<% form.category_links.filter { |l| l.errors.full_messages.present? }.each do |link| %>
+  <a href="<%= link.url %>" target="_blank"><%= link.url %></a>
+  <ul>
+    <% link.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  </ul>
+<% end %>
