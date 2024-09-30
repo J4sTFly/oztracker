@@ -16,6 +16,7 @@ module Oztracker
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
     config.active_job.queue_adapter = :sidekiq
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag.html_safe }
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

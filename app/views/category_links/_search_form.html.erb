@@ -1,0 +1,32 @@
+<%= form_for form,
+             url: search_category_links_path,
+             remote: true,
+             html: { method: :post },
+             authenticity_token: true do |f| %>
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label 'Product Name or Product URL:', class: 'col-form-label' %>
+        <%= f.text_field :pattern, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label 'Start Date:', class: 'col-form-label' %>
+        <%= f.date_select :start_date, month_format_string: "%{name}", class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label 'End Date:', class: 'col-form-label' %>
+        <%= f.date_select :end_date, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= f.submit 'Search', class: 'btn btn-success w-50' %>
+    <%= link_to 'Cancel', category_links_path, class: "btn btn-secondary w-25" %>
+  </div>
+<% end %>

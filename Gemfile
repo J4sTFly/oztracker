@@ -64,3 +64,7 @@ gem "pg", "~> 1.5"
 gem "faraday", "~> 2.12"
 
 gem "sidekiq", "~> 7.3"
+
+gem "bootstrap", "~> 5.3"
+
+gem "sassc-rails", "~> 2.1"

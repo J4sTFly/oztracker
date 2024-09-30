@@ -1,8 +1,14 @@
-<%= render 'errors', form: %>
 
-<%= form_for form, url: category_links_path, method: :post, data: { turbo: false } do |f| %>
-  <%= f.text_area :urls, size: '50x10' %>
-  <%= f.submit %>
+<div class="form-container">
+  <%= form_for form, url: category_links_path, method: :post, data: { turbo: false } do |f| %>
+    <div class="row">
+      <%= f.text_area :urls, size: '100x20' %>
+      <%= f.submit class: 'btn btn-success h2' %>
+    </div>
 
-  <% f.hidden_field :category_links %>
-<% end %>
+    <div class="row">
+      <%= render 'errors', form: f.object %>
+    </div>
+    <% f.hidden_field :category_links %>
+  <% end %>
+</div>

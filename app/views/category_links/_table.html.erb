@@ -1,0 +1,29 @@
+<div class="row w-100">
+  <table class="table">
+    <thead>
+      <tr>
+        <td class="text-center" width="30%">Product Name</td>
+        <% include_years = (form.end_date - form.start_date).to_i > 365 %>
+        <% days = form.start_date.upto(form.end_date).count %>
+        <% form.start_date.upto(form.end_date).each do |date| %>
+          <td class="text-center"><%= format_date(date, include_years) %></td>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td class="text-center">
+            <%= link_to product.link, target: '_blank' do %>
+              <%= image_tag product.image_link %>
+              <%= tag.p product.name %>
+            <% end %>
+          </td>
+          <% form.start_date.upto(form.end_date).each do |date| %>
+            <td class="text-center align-content-center"><%= price_column(prices[[product.id, date]]) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

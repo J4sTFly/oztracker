@@ -1,0 +1,11 @@
+$primary: green;
+@import 'bootstrap';
+
+a.disabled:hover {
+  cursor: not-allowed;
+}
+
+.table-scrollable {
+  display: flex;
+  overflow-x: auto;
+}

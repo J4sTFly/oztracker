@@ -27,10 +27,9 @@ class ProcessCategoryLinksService
     number_of_pages = document.css(NAVBAR_ITEM).size
 
     parse_page(document:)
-    (number_of_pages - 1).times do |page_num|
+    (number_of_pages).times do |page_num|
       next if page_num + 1 == first_parsed_page
 
-      binding.pry
       page_html = Faraday.get(url_with_page(page_num + 1)).body
       parse_page(page_html:)
     end
@@ -46,7 +45,7 @@ class ProcessCategoryLinksService
       generate_product(card)
     end
 
-  insert_records
+    insert_records
   end
 
   private

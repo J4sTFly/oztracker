@@ -18,6 +18,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container text-center">
+      <%= render 'layouts/header' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,6 @@
+<div class="row p-2">
+  <div class="col-sm-12">
+    <%= link_to 'Statistics', category_links_path, class: "btn btn-primary #{ new_link_disabled? ? 'active' : 'disabled' }" %>
+    <%= link_to 'Collect Data', new_category_link_path, class: " btn btn-primary #{ new_link_disabled? ? 'disabled' : 'active' }"  %>
+  </div>
+</div>

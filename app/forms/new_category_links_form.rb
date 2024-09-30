@@ -1,8 +1,4 @@
-class NewCategoryLinksForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-  include ActiveModel::Conversion
-
+class NewCategoryLinksForm < BaseForm
   NOT_FOUND_CODE = 404
 
   attribute :urls, :string
@@ -14,15 +10,16 @@ class NewCategoryLinksForm
     return false if invalid?
 
     validate_links
+    # Empty urls input if #save is successful 
+    if valid? && !category_links.any? { |link| link.errors.full_messages.present? }
+      self.urls = ""
+    end
+
     category_links.map { |link| link if link.errors.full_messages.blank? && link.save }.compact
   end
 
   def new_record?
     true
-  end
-
-  def persisted?
-    !new_record?
   end
 
   private
