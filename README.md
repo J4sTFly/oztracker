@@ -8,12 +8,15 @@ How to launch:
 
 * Install Ruby 3.3.5, PostgreSQL, Redis if not installed
 
-* Run bundle install
+* Bundle required Gems
+  bundle install
 
-* Run rails assets:precompile
+* Compile assets
+  rails assets:precompile
 
-* Generate rails credentials by config/credentials_sample.yml
+* Generate rails credentials according config/credentials_sample.yml
 
-* Run rails s
+* Start rails server and sidekiq
 
 * You're ready to go
+
