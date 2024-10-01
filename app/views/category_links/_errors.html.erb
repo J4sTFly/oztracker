@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<% if form.category_links.any? { |l| l.errors.full_messages.present? } %>
+<% if form.try(:category_links) && form.category_links.any? { |l| l.errors.full_messages.present? } %>
   <div class="card border-danger p-0">
     <div class="card-header bg-danger text-white">
       Errors with provided links:

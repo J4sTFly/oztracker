@@ -6,7 +6,7 @@ class SearchCategoryLinksForm < BaseForm
   validates :start_date, :end_date, presence: true
 
   def search
-    return [] if invalid?
+    return [[], []] if invalid?
 
     prices = Price.where(created_at: [ start_date...end_date+1.day ])
 

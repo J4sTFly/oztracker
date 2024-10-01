@@ -10,7 +10,7 @@ class NewCategoryLinksForm < BaseForm
     return false if invalid?
 
     validate_links
-    # Empty urls input if #save is successful 
+    # Empty urls input if #save is successful
     if valid? && !category_links.any? { |link| link.errors.full_messages.present? }
       self.urls = ""
     end
