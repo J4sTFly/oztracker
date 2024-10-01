@@ -1,0 +1,36 @@
+<% if form.errors.full_messages.present? %>
+  <div class="card border-danger p-0">
+    <div class="card-header bg-danger text-white">
+      <%= 'An error occured' %>
+    </div>
+    <div class="card-body">
+      <ul>
+        <% form.errors.full_messages.each do |error_message| %>
+          <li><%= error_message.html_safe %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% if form.try(:category_links) && form.category_links.any? { |l| l.errors.full_messages.present? } %>
+  <div class="card border-danger p-0">
+    <div class="card-header bg-danger text-white">
+      Errors with provided links:
+    </div>
+    <div class="card-body">
+      <ul>
+        <% form.category_links.filter { |l| l.errors.full_messages.present? }.each do |link| %>
+        <li>
+          <a href="<%= link.url %>" target="_blank"><%= link.url %></a>
+          <ul>
+            <% link.errors.full_messages.each do |error| %>
+              <p><%= error %></p>
+            <% end %>
+          </ul>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
