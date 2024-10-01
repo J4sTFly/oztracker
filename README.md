@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 3.3.5 + PostgreSQL Simple Ruby App for tracking OZ.by category products prices.
 
-Things you may want to cover:
+How to launch:
 
-* Ruby version
+* Clone the repository
 
-* System dependencies
+* Install Ruby 3.3.5, PostgreSQL, Redis if not installed
 
-* Configuration
+* Run bundle install
 
-* Database creation
+* Run rails assets:precompile
 
-* Database initialization
+* Generate rails credentials by config/credentials_sample.yml
 
-* How to run the test suite
+* Run rails s
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* You're ready to go
